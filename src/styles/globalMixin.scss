@@ -1,0 +1,7 @@
+
+
+@mixin txt-linear {
+    background: linear-gradient(12deg, $c-yellow-2 30%, $c-green-2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
