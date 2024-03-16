@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
+    "echarts": "^5.5.0",
+    "prismjs": "^1.29.0",
     "vue": "^3.4.19",
     "vue-router": "^4.3.0",
     "wow.js": "^1.2.2"
@@ -17,6 +19,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
     "sass": "^1.71.1",
-    "vite": "^5.1.4"
+    "vite": "^5.1.4",
+    "vite-plugin-prismjs": "^0.0.11"
   }
 }

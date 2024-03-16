@@ -2,7 +2,7 @@ import { ref } from "vue";
 import { wait } from "../utils/time";
 
 
-export const useCoding = (str) => {
+export const useCoding = (str, spaceTime = 100) => {
     const curStrs = ref([])
     const letters = str.split("")
     let index = 0
@@ -20,7 +20,7 @@ export const useCoding = (str) => {
             }
             curStrs.value.push(letters[index])
             index++
-            await wait(100)
+            await wait(spaceTime)
         }
     }
 

@@ -22,6 +22,7 @@
     padding: 10px 30px;
     align-items: center;
     position: fixed;
+    z-index: 2000;
     .left {
         display: flex;
         align-items: center;

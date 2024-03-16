@@ -10,6 +10,11 @@ const constantRoutes = [
                 path: '',
                 name: 'home',
                 component: () => import('@/views/Home/index.vue')
+            },
+            {
+                path: 'commit',
+                name: 'commit',
+                component: () => import('@/views/Commit/index.vue')
             }
         ]
     }

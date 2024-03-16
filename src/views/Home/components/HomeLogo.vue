@@ -8,7 +8,7 @@
             <div class="btn wow fadeInLeft">
                 <div class="start">
                 </div>
-                <p>Get Start</p>
+                <p @click="router.push('/commit')">Get Start</p>
             </div>
         </div>
         <div class="right wow fadeIn">
@@ -22,6 +22,9 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useCoding } from '../../../hooks/useCoding';
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
 
 const {
     startCoding,
