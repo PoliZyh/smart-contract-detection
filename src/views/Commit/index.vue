@@ -1,10 +1,11 @@
 <template>
     <div class="commit-box">
         <div class="header">
-            <span v-for="letter in curStrs" :key="letter">{{ letter }}</span>
+            <!-- <span v-for="letter in curStrs" :key="letter">{{ letter }}</span> -->
+            <span>请上传智能合约源代码、交易数据和事件日志。</span>
         </div>
         <!-- input -->
-        <input type="file" ref="UploadRef" style="display: none;" @change="handleFileUpload">
+        <input type="file" id="UploadInput" ref="UploadRef" style="display: none;" @change="handleFileUpload">
         <div class="uploads">
             <div class="upload-item wow fadeInUp" data-wow-delay="0s"
             @click="handleCommit(0)">
@@ -46,9 +47,12 @@
         <!-- loading -->
         <Loading style="margin-top: 240px;" v-if="isLoding"></Loading>
         <!-- result -->
-        <Result v-if="file.length == 3 && !isLoding" @change="() => isShowShap = true"></Result>
+        <Result v-if="file.length == 3 && !isLoding" 
+        @change="() => isShowShap = true"
+        @change-hot="() => isShowHot = true"></Result>
+        
         <Shap v-if="isShowShap" @change="() => isShowShap = false"></Shap>
-
+        <Hot v-if="isShowHot" @change="() => isShowHot = false"></Hot>
     </div>
 </template>
 
@@ -60,6 +64,7 @@ import useWow from '../../hooks/useWow';
 import Result from './components/Result.vue';
 import Loading from './components/Loading.vue';
 import Shap from "./components/Shap.vue";
+import Hot from './components/Hot.vue';
 
 const {
     curStrs,
@@ -71,10 +76,11 @@ const file = ref([])
 const fileIndex = ref(0)
 const isLoding = ref(false)
 const isShowShap = ref(false)
+const isShowHot = ref(false)
 
 const handleCommit = (index) => {
     fileIndex.value = index
-    UploadRef.value.click()
+    document.getElementById('UploadInput').click();
 }
 
 const handleChangeLoading = () => {

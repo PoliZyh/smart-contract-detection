@@ -14,6 +14,12 @@
             <p>特征值贡献度模型</p>
             <Model></Model>
         </div>
+        <div class="model-box b1 wow fadeInUp" v-if="strIndex >= str.length"
+            @click="emit('change-hot', true)">
+            <p>DeepLIFT深度学习重要特征</p>
+            <Pan></Pan>
+        </div>
+        
     </div>
 </template>
 
@@ -22,9 +28,9 @@
 import { onMounted, onUpdated, ref } from "vue";
 import Prism from "prismjs";
 import Model from "./Model.vue";
+import Pan from './Pan.vue'
 
-
-const emit = defineEmits(['change'])
+const emit = defineEmits(['change', 'change-hot'])
 
 const str = `
 pragma solidity ^0.8.0;
@@ -100,6 +106,10 @@ onMounted(() => {
         gap: 40px;
         align-items: center;
         cursor: pointer;
+    }
+
+    .b1 {
+        width: 30%;
     }
     
     .err-list {

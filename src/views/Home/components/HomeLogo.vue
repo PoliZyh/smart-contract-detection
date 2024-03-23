@@ -3,7 +3,8 @@
         <div class="left">
             <h1 class="name wow fadeInUp">DeepSecuChain</h1>
             <h2 class="det">
-                <span v-for="i in curStrs" :key="i">{{ i }}</span>
+                <!-- <span v-for="i in curStrs" :key="i">{{ i }}</span> -->
+                <span>Based on deep learning, blockchain smart contract security detection system.</span>
             </h2>
             <div class="btn wow fadeInLeft">
                 <div class="start">
