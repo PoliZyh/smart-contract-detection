@@ -11,6 +11,7 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "echarts": "^5.5.0",
+    "pinia": "^2.1.7",
     "prismjs": "^1.29.0",
     "vue": "^3.4.19",
     "vue-router": "^4.3.0",

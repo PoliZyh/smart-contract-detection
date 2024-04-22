@@ -1,8 +1,8 @@
 <template>
     <div class="commit-box">
         <div class="header">
-            <!-- <span v-for="letter in curStrs" :key="letter">{{ letter }}</span> -->
-            <span>请上传智能合约源代码、交易数据和事件日志。</span>
+            <span v-for="letter in curStrs" :key="letter">{{ letter }}</span>
+            <!-- <span>请上传智能合约源代码、交易数据和事件日志。</span> -->
         </div>
         <!-- input -->
         <input type="file" id="UploadInput" ref="UploadRef" style="display: none;" @change="handleFileUpload">
@@ -53,6 +53,8 @@
         
         <Shap v-if="isShowShap" @change="() => isShowShap = false"></Shap>
         <Hot v-if="isShowHot" @change="() => isShowHot = false"></Hot>
+
+        <HisBall class="ball"></HisBall>
     </div>
 </template>
 
@@ -65,6 +67,7 @@ import Result from './components/Result.vue';
 import Loading from './components/Loading.vue';
 import Shap from "./components/Shap.vue";
 import Hot from './components/Hot.vue';
+import HisBall from './components/HisBall.vue';
 
 const {
     curStrs,
@@ -118,6 +121,7 @@ onMounted(() => {
     width: 100%;
     padding: 3% 10%;
     min-height: 100vh;
+    position: relative;
     .header {
         width: fit-content;
         margin: 0 auto;
@@ -125,6 +129,11 @@ onMounted(() => {
         font-size: 2rem;
         @include txt-linear;
         height: 30px;
+    }
+    .ball {
+        position: absolute;
+        top: 10vh;
+        left: 100px;
     }
     .uploads {
         width: 95%;

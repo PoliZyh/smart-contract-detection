@@ -9,7 +9,10 @@
             <div class="btn wow fadeInLeft">
                 <div class="start">
                 </div>
-                <p @click="router.push('/commit')">Get Start</p>
+                <p @click="
+                userStore.isLogin 
+                ? router.push('/commit')
+                : router.push('/login')">Get Start</p>
             </div>
         </div>
         <div class="right wow fadeIn">
@@ -24,8 +27,10 @@
 import { onMounted } from 'vue';
 import { useCoding } from '../../../hooks/useCoding';
 import { useRouter } from 'vue-router';
+import useUserStore from '../../../store/modules/useUserStore'
 
 const router = useRouter()
+const userStore = useUserStore()
 
 const {
     startCoding,
