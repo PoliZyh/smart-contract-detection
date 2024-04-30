@@ -50,6 +50,7 @@
         <Result v-if="file.length == 3 && !isLoding" 
         @change="() => isShowShap = true"
         @change-hot="() => isShowHot = true"></Result>
+        <!-- <Result></Result> -->
         
         <Shap v-if="isShowShap" @change="() => isShowShap = false"></Shap>
         <Hot v-if="isShowHot" @change="() => isShowHot = false"></Hot>

@@ -10,7 +10,7 @@
                 <div class="input-group">
                     <input required="" placeholder="Password" name="password" id="password" type="password" />
                 </div>
-                <button type="submit" @click="handleLogin">Login</button>
+                <button  @click="handleLogin">Login</button>
                 <div class="bottom-text">
                     <p>Don't have an account? <RouterLink to="/register">Sign Up</RouterLink></p>
                     <p><a href="#">Forgot password?</a></p>

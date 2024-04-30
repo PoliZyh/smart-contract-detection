@@ -49,27 +49,27 @@ const status_map = {
 const data = ref([
     {
         id: 0,
-        files: ['test1', 'test2', 'test3'],
-        date: '2024-01-01',
-        time: '12:00:00',
+        files: ['code1', 'data1', 'log1'],
+        date: '2024-03-22',
+        time: '17:59:21',
         result: 0,
-        status: 1
+        status: 0
     },
     {
         id: 1,
         files: ['test1', 'test2', 'test3'],
-        date: '2024-01-01',
-        time: '12:00:00',
-        result: 2,
+        date: '2024-03-24',
+        time: '12:37:21',
+        result: 1,
         status: 0
     },
     {
         id: 2,
-        files: ['test1', 'test2', 'test3'],
-        date: '2024-01-01',
-        time: '12:00:00',
-        result: 1,
-        status: 1
+        files: ['code', 'data', 'log'],
+        date: '2024-04-22',
+        time: '19:31:03',
+        result: 2,
+        status: 0
     },
 ])
 </script>

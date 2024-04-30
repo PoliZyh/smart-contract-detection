@@ -1,6 +1,7 @@
 <template>
     <div class="result-box">
-        <pre><code class="language-python line-numbers" v-html="codeStr"></code></pre>
+        <!-- <highlightjs language='javascript' code="var x = 5;" /> -->
+        <pre><span class="err-line" v-if="showEr">Error:</span><span class="war-line" v-if="showEr">Warning:</span><code class="language-python line-numbers" v-html="codeStr"></code></pre>
         <div class="err-list wow fadeInUp" v-if="strIndex >= str.length">
             <p class="title">错误信息</p>
             <ul>
@@ -9,17 +10,15 @@
                 </li>
             </ul>
         </div>
-        <div class="model-box wow fadeInUp" v-if="strIndex >= str.length"
-            @click="emit('change', true)">
+        <div class="model-box wow fadeInUp" v-if="strIndex >= str.length" @click="emit('change', true)">
             <p>特征值贡献度模型</p>
             <Model></Model>
         </div>
-        <div class="model-box b1 wow fadeInUp" v-if="strIndex >= str.length"
-            @click="emit('change-hot', true)">
+        <div class="model-box b1 wow fadeInUp" v-if="strIndex >= str.length" @click="emit('change-hot', true)">
             <p>DeepLIFT深度学习重要特征</p>
             <Pan></Pan>
         </div>
-        
+
     </div>
 </template>
 
@@ -31,6 +30,7 @@ import Model from "./Model.vue";
 import Pan from './Pan.vue'
 
 const emit = defineEmits(['change', 'change-hot'])
+const showEr = ref(false)
 
 const str = `
 pragma solidity ^0.8.0;
@@ -77,6 +77,7 @@ const handlePushStr = () => {
         codeStr.value += str[strIndex.value++]
         if (strIndex.value >= str.length) {
             clearInterval(timer);
+            showEr.value = true
         }
     }, 20);
 }
@@ -90,6 +91,26 @@ onMounted(() => {
 })
 </script>
 
+
+<style lang="scss" scoped>
+code[class*="language-"], pre[class*="language-"] {
+    // color: red !important;
+    .err-line {
+        position: absolute;
+        color: red;
+        top: 63.8%;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .war-line {
+        position: absolute;
+        color: orange;
+        top: 51.0%;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+</style>
 
 <style scoped lang="scss">
 .result-box {
@@ -111,17 +132,19 @@ onMounted(() => {
     .b1 {
         width: 30%;
     }
-    
+
     .err-list {
         margin-top: 40px;
         color: $c-text-dark-1;
         padding: 20px;
         background-color: $c-black-light;
         border-radius: 10px;
+
         ul {
             list-style: decimal;
             padding-left: 20px;
             color: $c-text-dark-2;
+
             li {
                 line-height: 2;
             }
@@ -177,5 +200,40 @@ onMounted(() => {
             }
         }
     }
+
+    // pre {
+    //     position: relative;
+    //     // background-color: #fafafa;
+    //     font-size: 14px;
+    //     padding: 8px 8px 0px 8px;
+    //     overflow: hidden;
+    //     border: 1px solid #ccc;
+    // }
+
+    // code.hljs {
+    //     background-color: #fafafa !important;
+    //     line-height: 22px;
+    //     padding: 0 0 0.5em 2.2em !important;
+    //     white-space: unset;
+    // }
+
+    // .pre-numbering {
+    //     position: absolute;
+    //     top: 8px;
+    //     left: 0;
+    //     width: 30px;
+    //     border-right: 1px solid #c5c5c5;
+    //     background-color: #fafafa;
+    //     text-align: center;
+    //     line-height: 22px;
+    // }
+
+    // .pre-numbering li {
+    //     list-style: none;
+    //     color: #383a42;
+    //     font-size: 14px;
+    // }
+
+
 }
 </style>
